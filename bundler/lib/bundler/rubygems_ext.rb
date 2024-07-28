@@ -47,6 +47,8 @@ module Gem
         else
           File.open(path, flags, &block)
         end
+      ensure
+        FileUtils.rm_f(path) if File.exist?(path)
       end
     end
   end

@@ -816,6 +816,8 @@ An Array (#{env.inspect}) was passed in from #{caller[3]}
       else
         open_file(path, flags, &block)
       end
+    ensure
+      FileUtils.rm_f(path) if File.exist?(path)
     end
   end
 
